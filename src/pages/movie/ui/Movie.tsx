@@ -1,26 +1,13 @@
 import { memo } from 'react';
+import { useMovie } from '../../../entities/movie';
+import { MovieList } from '../../../widgets/movie-list';
 
 export const Movie = memo(() => {
+  const {getMovies} = useMovie()
+    const {data} = getMovies()
   return (
-    <div>
-      <h2>Movie page</h2>
+    <div className="About">
+      <MovieList movies={data?.results}/>
     </div>
   );
 });
-
-
-// Home +
-// Movie +
-// Bookmark -
-// Search -
-
-
-// Header - navigation
-
-
-// npm i -g @feature-sliced/cli
-
-// fsd entities category -s api model ui
-// fsd pages profile -s ui lorem
-// fsd widgets profile -s ui
-// fsd features profile -s ui
