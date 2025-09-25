@@ -16,7 +16,11 @@ export interface IMovie {
 }
 
 export interface IMovieParams {
-  page: string;
+  id?: string;
+  name?: string;
+  page?: string;
+  sort_by?: string;
   with_genres?: string;
-  sort_by?: string
+  value?: number;
 }
+

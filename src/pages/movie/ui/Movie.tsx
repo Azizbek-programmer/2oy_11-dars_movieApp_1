@@ -3,8 +3,8 @@ import { MoviePagination } from "@/features/movie-pagination";
 import { MovieList } from "@/widgets/movie-list";
 import { memo } from "react";
 import { useSearchParams } from "react-router-dom";
-import { MovieCategoryFilter } from "@/features/movieFilter/ui/MovieCategoryFilter";
 import { MovieSort } from "@/features/movieSort/ui/MovieSort";
+import { MovieCategoryFilter } from "@/features/movieFilter/ui/MovieCategoryFilter";
 
 export const Movie = memo(() => {
   const { getMovies } = useMovie();

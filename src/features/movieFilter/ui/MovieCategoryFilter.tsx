@@ -1,35 +1,37 @@
 import { memo } from "react";
 import { useMovieCategory } from "../model/useMovieCategory";
 import { Select } from "antd";
-// import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import type { IMovieParams } from "@/entities/movie";
 
 const { Option } = Select;
 
-interface Props {
-  onChange: (genreId: number | undefined) => void;
-  value?: number;
-}
-export const MovieCategoryFilter = memo(({ onChange, value }: Props) => {
+export const MovieCategoryFilter = memo(({ value }: IMovieParams) => {
   const { getCategories } = useMovieCategory();
   const { data: categories } = getCategories();
 
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // const onChange: PaginationProps["onChange"] = (p) => {
-  //   searchParams.set("page", p.toString());
-  //   setSearchParams(searchParams);
-  // };
+  const handleChange = (val: number | undefined) => {
+    if (val) {
+      searchParams.set("category", val.toString());
+    } else {
+      searchParams.delete("category");
+    }
+    searchParams.set("page", "1");
+    setSearchParams(searchParams);
+  };
 
   return (
     <Select
       value={value}
       placeholder="All Categories"
       style={{ width: 200 }}
-      onChange={(val) => onChange(val || undefined)}
+      onChange={handleChange}
       allowClear
     >
-      <Option>All Categories</Option>
-      {categories?.map((genre: { id: number; name: string }) => (
+      <Option value={undefined}>All Categories</Option>
+      {categories?.map((genre: IMovieParams) => (
         <Option key={genre.id} value={genre.id}>
           {genre.name}
         </Option>
