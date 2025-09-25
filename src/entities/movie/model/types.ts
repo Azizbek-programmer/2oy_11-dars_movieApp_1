@@ -14,3 +14,9 @@ export interface IMovie {
   vote_average: number;
   vote_count: number;
 }
+
+export interface IMovieParams {
+  page: string;
+  with_genres?: string;
+  sort_by?: string
+}
