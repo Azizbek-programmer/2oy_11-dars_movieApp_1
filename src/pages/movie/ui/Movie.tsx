@@ -12,12 +12,12 @@ export const Movie = memo(() => {
 
   const page = searchParams.get("page") ?? "1";
   const sort_by = searchParams.get("sort_by") ?? "popularity.desc";
-  const category = searchParams.get("category");
+  const category = searchParams.get("category") ?? "";
 
   const { data } = getMovies({
     page: page,
     sort_by: sort_by,
-    with_genres: category ? category : undefined,
+    with_genres: category
   });
 
   const handlePageChange = (newPage: number) => {
@@ -28,9 +28,7 @@ export const Movie = memo(() => {
   return (
     <div>
       <div className="container py-4 flex gap-4">
-        <MovieCategoryFilter
-          value={category ? Number(category) : undefined}
-        />
+        <MovieCategoryFilter/>
         <MovieSort />
       </div>
 
