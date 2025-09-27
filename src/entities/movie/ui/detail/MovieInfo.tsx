@@ -2,6 +2,8 @@ import { memo, type FC } from "react";
 import { useMovie } from "../../model/useMovie";
 import { createImageUrl } from "@/shared/utils";
 import { Image, Tag } from "antd";
+import { Link } from "react-router-dom";
+import { Title } from "@/shared/ui/title/Title";
 
 interface Props {
   id: string;
@@ -75,6 +77,14 @@ export const MovieInfo: FC<Props> = memo((props) => {
           ))}
         </div>
       </section>
+        <section className="container mt-10 my-7">
+          <Title>Tabs</Title>
+          <div className="flex gap-4">
+            <Link to={''}>Review</Link>
+            <Link to={'cast'}>Cast</Link>
+            <Link to={'other'}>Others</Link>
+          </div>
+        </section>
     </div>
   );
 });

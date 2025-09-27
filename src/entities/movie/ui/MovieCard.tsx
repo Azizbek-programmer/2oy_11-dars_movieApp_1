@@ -2,19 +2,24 @@ import { createImageUrl } from "@/shared/utils";
 import { memo, type FC } from "react";
 import type { IMovie } from "../model/types";
 import { useNavigate } from "react-router-dom";
+import MovieCardSkeleton from "./skeleton/MovieSkeleton";
 
 interface Props {
-  movie: IMovie;
+  movie?: IMovie;
+  isLoading?: boolean; 
 }
 
-
 export const MovieCard: FC<Props> = memo((props) => {
-  const { movie } = props;
+  const { movie, isLoading } = props;
   const navigate = useNavigate();
+
+  if (isLoading || !movie) {
+    return <MovieCardSkeleton />;
+  }
 
   return (
     <div
-      className="bg-white dark:bg-slate-900 rounded-xl cursor-pointer hover:scale-105 duration-300"
+      className="bg-white dark:bg-slate-900 rounded-xl cursor-pointer hover:scale-104 duration-300"
       onClick={() => navigate(`/movie/${movie.id}`)}
     >
       <img

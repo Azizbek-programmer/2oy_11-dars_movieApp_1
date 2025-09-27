@@ -18,33 +18,66 @@ export const Footer = memo(() => {
   return (
     <footer className="py-8 bg-slate-200 dark:bg-black dark:text-white">
       <div className="container mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start gap-8">
+        
+        {/* Logo + Stores */}
         <div className="flex flex-col gap-4 items-center md:items-start">
-          <img src={logo} alt="logo" className="w-32 md:w-40" />
-          <img src={market} alt="Google Play" className="w-32 md:w-40" />
-          <img src={store} alt="App Store" className="w-32 md:w-40" />
+          <img src={logo} alt="logo" className="w-32 md:w-40 hover:-translate-y-1 transition-transform" />
+          <img src={market} alt="Google Play" className="w-32 md:w-40 hover:-translate-y-1 transition-transform" />
+          <img src={store} alt="App Store" className="w-32 md:w-40 hover:-translate-y-1 transition-transform" />
         </div>
+
+        {/* About */}
         <div className="flex flex-col gap-3 w-full sm:w-auto items-center md:items-start">
           <p className="font-semibold mb-2">О нас</p>
-          <div className="flex items-center gap-2"><img src={birbir} alt="" /><span>Публичная оферта</span></div>
-          <div className="flex items-center gap-2"><img src={birikki} alt="" /><span>Реклама</span></div>
-          <div className="flex items-center gap-2"><img src={biruch} alt="" /><span>F.A.Q</span></div>
-          <div className="flex items-center gap-2"><img src={bir4} alt="" /><span>Контакты</span></div>
+          {[
+            { img: birbir, text: "Публичная оферта" },
+            { img: birikki, text: "Реклама" },
+            { img: biruch, text: "F.A.Q" },
+            { img: bir4, text: "Контакты" },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-2 cursor-pointer transition-transform  hover:-translate-y-1 hover:text-red-500"
+            >
+              <img src={item.img} alt="" className="w-5 h-5" />
+              <span>{item.text}</span>
+            </div>
+          ))}
         </div>
+
+        {/* Categories */}
         <div className="flex flex-col gap-3 w-full sm:w-auto items-center md:items-start">
           <p className="font-semibold mb-2">Категории</p>
-          <div className="flex items-center gap-2"><img src={ikki1} alt="" /><span>Кино</span></div>
-          <div className="flex items-center gap-2"><img src={ikki2} alt="" /><span>Театр</span></div>
-          <div className="flex items-center gap-2"><img src={ikki3} alt="" /><span>Концерты</span></div>
-          <div className="flex items-center gap-2"><img src={ikki4} alt="" /><span>Спорт</span></div>
+          {[
+            { img: ikki1, text: "Кино" },
+            { img: ikki2, text: "Театр" },
+            { img: ikki3, text: "Концерты" },
+            { img: ikki4, text: "Спорт" },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-2 cursor-pointer transition-transform  hover:-translate-y-1 hover:text-red-500"
+            >
+              <img src={item.img} alt="" className="w-5 h-5" />
+              <span>{item.text}</span>
+            </div>
+          ))}
         </div>
+
+        {/* Contact */}
         <div className="flex flex-col gap-3 w-full sm:w-auto items-center md:items-start">
           <p className="font-semibold mb-2">Связаться с нами</p>
           <span className="text-red-600 font-bold">+998 (95) 897-33-38</span>
-            <p className="font-semibold mt-2">Социальные сети</p>
+          <p className="font-semibold mt-2">Социальные сети</p>
           <div className="flex gap-3">
-            <img src={insta} alt="Instagram" className="w-6 h-6" />
-            <img src={facebok} alt="Facebook" className="w-6 h-6" />
-            <img src={youtube} alt="YouTube" className="w-6 h-6" />
+            {[insta, facebok, youtube].map((icon, i) => (
+              <img
+                key={i}
+                src={icon}
+                alt="social"
+                className="w-6 h-6 cursor-pointer transition-transform  hover:-translate-y-1 hover:text-red-500"
+              />
+            ))}
           </div>
         </div>
 

@@ -1,34 +1,64 @@
 import { memo } from "react";
 import { NavLink } from "react-router-dom";
-import home from "@/shared/assets/home/home.svg";
-import moviesmarket from "@/shared/assets/home/moviemarket.svg";
-import serch from "@/shared/assets/home/search.svg";
-import movies from "@/shared/assets/home/moviemarket.svg";
+import { Search, Home, Film, Bookmark } from "lucide-react";
 
 export const Navigation = memo(() => {
   return (
-    <div className="flex gap-8 items-center">
-      
-      <div className="flex flex-col items-center text-white-700 hover:text-red-500 transition">
-        <img src={home} alt="Home" className="w-6 h-6" />
-        <NavLink to={"/"}>Home</NavLink>
-      </div>
+    <div
+      className="
+        flex items-center justify-around
+        fixed bottom-0 left-0 right-0 bg-black 
+        sm:static sm:justify-center sm:gap-8 sm:bg-transparent 
+      "
+    >
+      <NavLink
+        to="/"
+        end
+        className={({ isActive }) =>
+          `group flex flex-col items-center transition ${
+            isActive ? "text-red-500" : "text-gray-500 hover:text-red-500"
+          }`
+        }
+      >
+        <Home className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
+        <span className="text-xs sm:text-sm mt-1">Home</span>
+      </NavLink>
 
-      <div className="flex flex-col items-center text-white-700 hover:text-red-500 transition">
-        <img src={movies} alt="Movie" className="w-6 h-6" />
-        <NavLink to={"/movie"}>Movie</NavLink>
-      </div>
+      <NavLink
+        to="/movie"
+        className={({ isActive }) =>
+          `group flex flex-col items-center transition ${
+            isActive ? "text-red-500" : "text-gray-500 hover:text-red-500"
+          }`
+        }
+      >
+        <Film className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
+        <span className="text-xs sm:text-sm mt-1">Movie</span>
+      </NavLink>
 
-      <div className="flex flex-col items-center text-white-700 hover:text-red-500 transition">
-        <img src={moviesmarket} alt="BookMark" className="w-6 h-6" />
-        <NavLink to={"/bookMark"}>BookMark</NavLink>
-      </div>
+      <NavLink
+        to="/bookmark"
+        className={({ isActive }) =>
+          `group flex flex-col items-center transition ${
+            isActive ? "text-red-500" : "text-gray-500 hover:text-red-500"
+          }`
+        }
+      >
+        <Bookmark className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
+        <span className="text-xs sm:text-sm mt-1">Bookmark</span>
+      </NavLink>
 
-      <div className="flex flex-col items-center text-white-700 hover:text-red-500 transition">
-        <img src={serch} alt="Search" className="w-6 h-6" />
-        <NavLink to={"/search"}>Search</NavLink>
-      </div>
-
+      <NavLink
+        to="/search"
+        className={({ isActive }) =>
+          `group flex flex-col items-center transition ${
+            isActive ? "text-red-500" : "text-gray-500 hover:text-red-500"
+          }`
+        }
+      >
+        <Search className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
+        <span className="text-xs sm:text-sm mt-1">Search</span>
+      </NavLink>
     </div>
   );
 });
