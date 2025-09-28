@@ -1,0 +1,1 @@
+export {SearchMovie as default} from "./ui/Search"

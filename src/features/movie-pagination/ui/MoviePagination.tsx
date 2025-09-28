@@ -6,6 +6,7 @@ interface Props {
   page: string;
   total_pages: number;
   onChange: (newPage: number) => void;
+  isLoading?: boolean; 
 }
 
 export const MoviePagination: FC<Props> = memo((props) => {

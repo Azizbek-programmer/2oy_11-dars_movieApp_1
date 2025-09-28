@@ -14,7 +14,7 @@ export const Movie = memo(() => {
   const sort_by = searchParams.get("sort_by") ?? "popularity.desc";
   const category = searchParams.get("category") ?? "";
 
-  const { data } = getMovies({
+  const { data, isLoading } = getMovies({
     page: page,
     sort_by: sort_by,
     with_genres: category
@@ -32,7 +32,7 @@ export const Movie = memo(() => {
         <MovieSort />
       </div>
 
-      <MovieList movies={data?.results} />
+      <MovieList  movies={data?.results || []} isLoading={isLoading}/>
 
       <MoviePagination
         page={page}
