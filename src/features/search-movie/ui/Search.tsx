@@ -18,6 +18,7 @@ export const SearchMovie = memo(() => {
     <div>
       <div className="container">
         <Input
+          className="custom-input"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="Search movies..."

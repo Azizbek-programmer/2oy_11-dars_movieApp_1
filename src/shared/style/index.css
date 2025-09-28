@@ -2,51 +2,68 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-
-.container{
-    max-width: 1204px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 12px;
-    padding-right: 12px;
+.container {
+  max-width: 1204px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
-/* Selectning umumiy fonini to‘q kulrang */
-.custom-select .ant-select-selector {
-  background-color: #0f172a !important; /* to‘q kulrang fon */
-  border: 2px solid crimson !important; /* qizil border */
-  color: white !important; /* text oq bo‘lsin */
-}
-
-/* Placeholder qizil bo‘lsin */
-.custom-select .ant-select-selection-placeholder {
+/* ✅ Umumiy placeholder qizil */
+.custom-select .ant-select-selection-placeholder,
+.custom-input::placeholder {
   color: crimson !important;
   font-weight: 500;
+  opacity: 0.9;
 }
 
-/* Dropdown ham chiroyli bo‘lsin */
-.custom-select .ant-select-dropdown {
-  background-color: #1e1e1e !important; /* qora fon */
+/* ✅ Select va Input umumiy stil */
+.custom-select .ant-select-selector,
+.custom-input {
+  background-color: #0f172a !important;   /* fon */
+  border: 2px solid crimson !important;   /* qizil border */
+  border-radius: 8px !important;          /* yumaloqlash */
+  color: white !important;                /* oq text */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 0 12px !important;
+}
+
+/* Select balandligi alohida */
+.custom-select .ant-select-selector {
+  height: 40px !important;
+  justify-content: center;
+}
+
+/* Input balandligi alohida */
+.custom-input {
+  height: 40px !important;
+}
+
+/* ✅ Dropdown va optionlar */
+.custom-select .ant-select-dropdown,
+.custom-select .ant-select-item {
+  background-color: #1e1e1e !important;
   color: white !important;
 }
 
-
-/* Selectning umumiy fonini to‘q kulrang */
-.custom-select .ant-select-selector {
-  background-color: #0f172a !important; /* to‘q kulrang fon */
-  border: 2px solid crimson !important; /* qizil border */
-  color: white !important; /* text oq bo‘lsin */
-}
-
-/* Placeholder qizil bo‘lsin */
-.custom-select .ant-select-selection-placeholder {
-  color: crimson !important;
-  font-weight: 500;
-}
-
-/* Dropdown ham chiroyli bo‘lsin */
-.custom-select .ant-select-dropdown {
-  background-color: #1e1e1e !important; /* qora fon */
+/* Hover effekti */
+.custom-select .ant-select-item-option-active,
+.custom-select .ant-select-item-option-selected {
+  background-color: crimson !important;
   color: white !important;
+}
+
+/* Input hover va fokus */
+.custom-input:hover {
+  border-color: #ff4d4d !important;
+}
+
+.custom-input:focus {
+  border-color: crimson !important;
+  box-shadow: 0 0 5px crimson !important;
+  outline: none !important;
 }

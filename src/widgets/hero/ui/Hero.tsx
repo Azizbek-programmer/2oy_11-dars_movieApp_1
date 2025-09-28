@@ -2,6 +2,7 @@ import { memo, useState, type Key } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 
+
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
