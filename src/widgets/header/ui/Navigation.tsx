@@ -1,8 +1,11 @@
 import { memo } from "react";
 import { NavLink } from "react-router-dom";
 import { Search, Home, Film, Bookmark } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const Navigation = memo(() => {
+  const { t } = useTranslation();
+
   return (
     <div
       className="
@@ -21,7 +24,7 @@ export const Navigation = memo(() => {
         }
       >
         <Home className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
-        <span className="text-xs sm:text-sm mt-1">Home</span>
+        <span className="text-xs sm:text-sm mt-1">{t("header.navigation.home")}</span>
       </NavLink>
 
       <NavLink
@@ -33,7 +36,7 @@ export const Navigation = memo(() => {
         }
       >
         <Film className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
-        <span className="text-xs sm:text-sm mt-1">Movie</span>
+        <span className="text-xs sm:text-sm mt-1">{t("header.navigation.movies")}</span>
       </NavLink>
 
       <NavLink
@@ -45,7 +48,7 @@ export const Navigation = memo(() => {
         }
       >
         <Bookmark className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
-        <span className="text-xs sm:text-sm mt-1">Bookmark</span>
+        <span className="text-xs sm:text-sm mt-1">{t("header.navigation.bookmark")}</span>
       </NavLink>
 
       <NavLink
@@ -57,7 +60,7 @@ export const Navigation = memo(() => {
         }
       >
         <Search className="w-6 h-6 transition-transform group-hover:-translate-y-1" />
-        <span className="text-xs sm:text-sm mt-1">Search</span>
+        <span className="text-xs sm:text-sm mt-1">{t("header.navigation.search")}</span>
       </NavLink>
     </div>
   );

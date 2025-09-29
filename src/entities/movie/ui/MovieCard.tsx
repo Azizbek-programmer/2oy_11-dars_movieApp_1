@@ -3,6 +3,11 @@ import { memo, type FC } from "react";
 import type { IMovie } from "../model/types";
 import { useNavigate } from "react-router-dom";
 import MovieCardSkeleton from "./skeleton/MovieSkeleton";
+import { Bookmark } from "lucide-react";
+import type { RootState } from '../../../app/store';
+import { toggleCart } from '@/app/store/cartSlice';
+import { useDispatch, useSelector } from "react-redux";
+
 
 interface Props {
   movie?: IMovie;
@@ -12,6 +17,8 @@ interface Props {
 export const MovieCard: FC<Props> = memo((props) => {
   const { movie, isLoading } = props;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cart = useSelector((state: RootState) => state.cart.value);
 
   if (isLoading || !movie) {
     return <MovieCardSkeleton />;
@@ -19,7 +26,7 @@ export const MovieCard: FC<Props> = memo((props) => {
 
   return (
     <div
-      className="bg-white dark:bg-slate-900 rounded-xl cursor-pointer hover:scale-104 duration-300"
+      className="relative bg-white dark:bg-slate-900 rounded-xl cursor-pointer hover:scale-104 duration-300 group"
       onClick={() => navigate(`/movie/${movie.id}`)}
     >
       <div className="relative">
@@ -31,7 +38,18 @@ export const MovieCard: FC<Props> = memo((props) => {
         <span className="absolute top-2 left-2 bg-red-700/70 text-white text-xs font-semibold px-2 py-1 rounded-md">
           {movie.release_date.split("-")[0]}
         </span>
+
+        <button
+          className="absolute top-2 right-2 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition"
+           onClick={(e) => {
+            e.stopPropagation();
+            dispatch(toggleCart(movie));
+          }}
+        >
+          <Bookmark size={20} />
+        </button>
       </div>
+
       <div className="p-3 space-y-1">
         <h3
           className="line-clamp-1 font-semibold text-lg"
