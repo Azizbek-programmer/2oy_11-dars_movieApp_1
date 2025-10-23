@@ -42,7 +42,8 @@ export const MovieCard: FC<Props> = memo((props) => {
         </span>
 
         <button
-          className="absolute top-2 right-2 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition"
+          className="absolute top-2 right-2 p-2 rounded-full bg-black/50 text-white
+          opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition"
            onClick={(e) => {
             e.stopPropagation();
             dispatch(toggleCart(movie));
