@@ -6,7 +6,7 @@ import MovieCardSkeleton from "./skeleton/MovieSkeleton";
 import { Bookmark } from "lucide-react";
 import type { RootState } from '../../../app/store';
 import { toggleCart } from '@/app/store/cartSlice';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector,  } from "react-redux";
 
 
 interface Props {
@@ -23,6 +23,8 @@ export const MovieCard: FC<Props> = memo((props) => {
   if (isLoading || !movie) {
     return <MovieCardSkeleton />;
   }
+
+  const isAdded = cart.some((item: IMovie) => item.id === movie.id);
 
   return (
     <div
@@ -46,7 +48,10 @@ export const MovieCard: FC<Props> = memo((props) => {
             dispatch(toggleCart(movie));
           }}
         >
-          <Bookmark size={20} />
+          <Bookmark size={20}
+          color={isAdded ? "#eab308" : "#ffffff"}
+            fill={isAdded ? "#eab308" : "none"}
+             />
         </button>
       </div>
 

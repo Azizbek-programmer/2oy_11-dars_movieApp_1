@@ -10,7 +10,7 @@ export const useMovie = () => {
         retry: 0,
         refetchOnWindowFocus: false,
         gcTime: 1000 * 60 * 8,
-        staleTime: 1000 * 60 
+        staleTime: 1000 * 60
     })
 
     const getMovieById = (id:string) => useQuery({
