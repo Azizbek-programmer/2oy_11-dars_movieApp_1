@@ -1,3 +1,4 @@
+// ✅ Header.tsx — faqat bitta o‘zgarish Navigation qismida!
 import { memo } from "react";
 import { Logo } from "./Logo";
 import { Navigation } from "./Navigation";
@@ -15,9 +16,7 @@ export const Header = memo(() => {
         "
       >
         <Logo />
-        <div className="hidden sm:block">
-          <Navigation />
-        </div>
+        <Navigation />
         <Options />
       </nav>
     </header>
